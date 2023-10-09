@@ -1,0 +1,28 @@
+CREATE OR REPLACE PROCEDURE insert_data (
+cid consumer_s.cid%TYPE,
+state_id consumer_s.state_id%TYPE,
+crop_id consumer_c.crop_id%TYPE,
+cust_price consumer_cp.cust_price%TYPE,
+cust_qty consumer_cq.cust_qty%TYPE)
+IS
+BEGIN
+INSERT INTO consumer_s (cid,state_id) VALUES (cid,state_id);
+INSERT INTO consumer_c (cid,crop_id) VALUES (cid,crop_id);
+INSERT INTO consumer_cp (cid,cust_price) VALUES (cid,cust_price);
+INSERT INTO consumer_cq (cid,cust_qty) VALUES (cid,cust_qty);
+COMMIT;
+END;
+/
+begin
+insert_data(6001,5001,1001,55,10);
+insert_data(6002,5001,1004,10,8);
+insert_data(6003,5002,1002,35,10);
+insert_data(6004,5003,1003,30,12);
+insert_data(6005,5002,1002,35,10);
+insert_data(6006,5004,1001,52,14);
+end;
+/
+select * from consumer_s;
+select * from consumer_c;
+select * from consumer_cp;
+select * from consumer_cq;

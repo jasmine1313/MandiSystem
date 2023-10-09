@@ -1,0 +1,33 @@
+CREATE OR REPLACE PROCEDURE insert_data (
+sno sellstate_id.sno%TYPE,
+state_id sellstate_id.state_id%TYPE,
+state_name sellstate_n.state_name%TYPE,
+crop_id sellstate_c.crop_id%TYPE,
+sellprice sellstate_s.sellprice%TYPE,
+qty sellstate_s.qty%TYPE)
+IS
+BEGIN
+INSERT INTO sellstate_id (sno,state_id) VALUES (sno,state_id);
+INSERT INTO sellstate_n (sno,state_name) VALUES (sno,state_name);
+INSERT INTO sellstate_c (sno,crop_id) VALUES (sno,crop_id);
+INSERT INTO sellstate_s (sno,sellprice,qty) VALUES (sno,sellprice,qty);
+COMMIT;
+END;
+/
+begin
+insert_data(1,5001,'Delhi',1001,5000,5);
+insert_data(2,5002,'Punjab',1001,5200,5);
+insert_data(3,5002,'Punjab',1002,3000,14);
+insert_data(4,5003,'Uttar Pradesh',1003,2500,12);
+insert_data(5,5004,'Haryana',1001,5200,14);
+insert_data(6,5002,'Punjab',1002,3000,6);
+insert_data(7,5004,'Punjab',1002,3000,4);
+insert_data(8,5001,'Delhi',1004,350,16);
+insert_data(9,5002,'Punjab',1005,10000,14);
+insert_data(10,5001,'Delhi',1005,10000,6);
+end;
+/
+select * from sellstate_id;
+select * from sellstate_n;
+select * from sellstate_c;
+select * from sellstate_s;
